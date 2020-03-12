@@ -1,14 +1,20 @@
 {
-  "name": "four-card-feature-section-master",
+  "name": "four-card-feature-section",
   "version": "1.0.0",
+  "homepage": "https://predeyo.github.io/four-card-feature-section",
   "description": "Design preview for the Four card feature section coding challenge",
   "scripts": {
     "start": "npm run build && node-sass src/ -o public/ --watch --recursive",
-    "build": "node-sass src/ -o public/"
+    "build": "node-sass src/ -o public/",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public"
   },
   "author": "Pre",
   "license": "ISC",
   "devDependencies": {
     "node-sass": "^4.13.1"
+  },
+  "dependencies": {
+    "gh-pages": "^2.2.0"
   }
 }
