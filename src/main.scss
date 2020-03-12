@@ -1,3 +1,139 @@
+@import url("reset.css");
+
+// Primary Colors
+
+$red: hsl(0, 78%, 62%);
+$cyan: hsl(180, 62%, 55%);
+$orange: hsl(34, 97%, 64%);
+$blue: hsl(212, 86%, 64%);
+
+// Neutral Colors
+
+$very-dark-blue: hsl(234, 12%, 34%);
+$grayish-blue: hsl(229, 6%, 66%);
+$very-light-gray: hsl(0, 0%, 98%);
+
+// Shadow colors
+$card-drop-shadow-color: hsla(212, 86%, 64%, 0.09);
+
+// Font weights
+
+$extra-light: 200;
+$regular: 400;
+$semi-bold: 600;
+
+// Borders & Shadows
+$border-radius: 7px;
+
 body {
   font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $very-light-gray;
+  margin: 0 30px 30px 30px;
+}
+
+// Headings
+.heading-skinny {
+  color: $very-dark-blue;
+  font-weight: $extra-light;
+  font-size: 2.2rem;
+  letter-spacing: 0.01rem;
+  line-height: 2.355rem;
+  margin-bottom: 13px;
+  margin-top: 80px;
+  text-align: center;
+}
+
+.heading-heavy {
+  color: $very-dark-blue;
+  font-weight: $semi-bold;
+  font-size: 2.2rem;
+  letter-spacing: 0.005rem;
+  line-height: 2.355rem;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.heading-subtitle {
+  color: $grayish-blue;
+  font-weight: $regular;
+  font-size: 0.94rem;
+  letter-spacing: 0.005rem;
+  max-width: 520px;
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  grid-template-rows: repeat(4, calc(125px - 15px));
+  grid-template-areas:
+    ".        card-two         ."
+    "card-one card-two card-four"
+    "card-one card-three card-four"
+    ".        card-three       .";
+  grid-gap: 30px;
+
+  .card-one {
+    grid-area: card-one;
+    border-top: 4px solid $cyan;
+  }
+  .card-two {
+    grid-area: card-two;
+    border-top: 4px solid $red;
+  }
+  .card-three {
+    grid-area: card-three;
+    border-top: 4px solid $orange;
+  }
+  .card-four {
+    grid-area: card-four;
+    border-top: 4px solid $blue;
+  }
+  .card {
+    background: white;
+    padding: 28px 32px 32px 32px;
+    border-radius: $border-radius;
+    position: relative;
+
+    -webkit-box-shadow: -1px 14px 14px 4px $card-drop-shadow-color;
+    -moz-box-shadow: -1px 14px 14px 4px $card-drop-shadow-color;
+    box-shadow: -1px 14px 14px 4px $card-drop-shadow-color;
+
+    h5 {
+      margin: 0;
+      font-weight: $semi-bold;
+      color: $very-dark-blue;
+      font-size: 1.17rem;
+      letter-spacing: 0.07rem;
+    }
+    p {
+      color: $grayish-blue;
+      font-weight: $regular;
+      font-size: 0.85em;
+      letter-spacing: 0.025em;
+    }
+    img {
+      position: absolute;
+      bottom: 32px;
+      right: 32px;
+      height: 64px;
+      width: 64px;
+    }
+  }
+}
+@media screen and (max-width: 1160px) {
+  .cards {
+    grid-template-columns: 350px;
+    grid-template-rows: repeat(4, 250px);
+    grid-template-areas:
+      "card-one"
+      "card-two"
+      "card-three"
+      "card-four";
+  }
 }
