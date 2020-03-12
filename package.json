@@ -1,0 +1,14 @@
+{
+  "name": "four-card-feature-section-master",
+  "version": "1.0.0",
+  "description": "Design preview for the Four card feature section coding challenge",
+  "scripts": {
+    "start": "npm run build && node-sass src/ -o public/ --watch --recursive",
+    "build": "node-sass src/ -o public/"
+  },
+  "author": "Pre",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.13.1"
+  }
+}
