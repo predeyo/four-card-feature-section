@@ -1,23 +1,21 @@
 @import url("reset.css");
 
 // Primary Colors
-
 $red: hsl(0, 78%, 62%);
 $cyan: hsl(180, 62%, 55%);
 $orange: hsl(34, 97%, 64%);
 $blue: hsl(212, 86%, 64%);
 
 // Neutral Colors
-
 $very-dark-blue: hsl(234, 12%, 34%);
 $grayish-blue: hsl(229, 6%, 66%);
 $very-light-gray: hsl(0, 0%, 98%);
 
 // Shadow colors
 $card-drop-shadow-color: hsla(212, 86%, 64%, 0.09);
+$card-hover-drop-shadow-color: hsla(212, 86%, 44%, 0.09);
 
 // Font weights
-
 $extra-light: 200;
 $regular: 400;
 $semi-bold: 600;
@@ -70,7 +68,7 @@ body {
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 350px);
-  grid-template-rows: repeat(4, calc(125px - 15px));
+  grid-template-rows: repeat(4, minmax(calc(125px - 15px), auto));
   grid-template-areas:
     ".        card-two         ."
     "card-one card-two card-four"
@@ -95,16 +93,21 @@ body {
     border-top: 4px solid $blue;
   }
   .card {
+    display: grid;
+    grid-template-rows: auto 1fr 64px;
     background: white;
     padding: 28px 32px 32px 32px;
     border-radius: $border-radius;
-    position: relative;
-
-    -webkit-box-shadow: -1px 14px 14px 4px $card-drop-shadow-color;
-    -moz-box-shadow: -1px 14px 14px 4px $card-drop-shadow-color;
     box-shadow: -1px 14px 14px 4px $card-drop-shadow-color;
+    transition: box-shadow 0.3s;
+    cursor: pointer;
 
-    h5 {
+    &:hover,
+    &:target {
+      box-shadow: -1px 14px 14px 4px $card-hover-drop-shadow-color;
+    }
+
+    h2 {
       margin: 0;
       font-weight: $semi-bold;
       color: $very-dark-blue;
@@ -118,9 +121,7 @@ body {
       letter-spacing: 0.025em;
     }
     img {
-      position: absolute;
-      bottom: 32px;
-      right: 32px;
+      margin-left: auto;
       height: 64px;
       width: 64px;
     }
@@ -128,8 +129,17 @@ body {
 }
 @media screen and (max-width: 1160px) {
   .cards {
+    grid-template-columns: 350px 350px;
+    grid-template-rows: repeat(2, minmax(250px, auto));
+    grid-template-areas:
+      "card-one card-two"
+      "card-three card-four";
+  }
+}
+@media screen and (max-width: 800px) {
+  .cards {
     grid-template-columns: 350px;
-    grid-template-rows: repeat(4, 250px);
+    grid-template-rows: repeat(4, minmax(250px, auto));
     grid-template-areas:
       "card-one"
       "card-two"
