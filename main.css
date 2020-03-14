@@ -39,7 +39,7 @@ body {
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 350px);
-  grid-template-rows: repeat(4, calc(125px - 15px));
+  grid-template-rows: repeat(4, minmax(calc(125px - 15px), auto));
   grid-template-areas: ".        card-two         ." "card-one card-two card-four" "card-one card-three card-four" ".        card-three       .";
   grid-gap: 30px; }
   .cards .card-one {
@@ -55,14 +55,17 @@ body {
     grid-area: card-four;
     border-top: 4px solid #549ef2; }
   .cards .card {
+    display: grid;
+    grid-template-rows: auto 1fr 64px;
     background: white;
     padding: 28px 32px 32px 32px;
     border-radius: 7px;
-    position: relative;
-    -webkit-box-shadow: -1px 14px 14px 4px rgba(84, 158, 242, 0.09);
-    -moz-box-shadow: -1px 14px 14px 4px rgba(84, 158, 242, 0.09);
-    box-shadow: -1px 14px 14px 4px rgba(84, 158, 242, 0.09); }
-    .cards .card h5 {
+    box-shadow: -1px 14px 14px 4px rgba(84, 158, 242, 0.09);
+    transition: box-shadow 0.3s;
+    cursor: pointer; }
+    .cards .card:hover, .cards .card:target {
+      box-shadow: -1px 14px 14px 4px rgba(16, 106, 209, 0.09); }
+    .cards .card h2 {
       margin: 0;
       font-weight: 600;
       color: #4c4e61;
@@ -74,14 +77,18 @@ body {
       font-size: 0.85em;
       letter-spacing: 0.025em; }
     .cards .card img {
-      position: absolute;
-      bottom: 32px;
-      right: 32px;
+      margin-left: auto;
       height: 64px;
       width: 64px; }
 
 @media screen and (max-width: 1160px) {
   .cards {
+    grid-template-columns: 350px 350px;
+    grid-template-rows: repeat(2, minmax(250px, auto));
+    grid-template-areas: "card-one card-two" "card-three card-four"; } }
+
+@media screen and (max-width: 800px) {
+  .cards {
     grid-template-columns: 350px;
-    grid-template-rows: repeat(4, 250px);
+    grid-template-rows: repeat(4, minmax(250px, auto));
     grid-template-areas: "card-one" "card-two" "card-three" "card-four"; } }
